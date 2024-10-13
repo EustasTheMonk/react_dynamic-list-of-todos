@@ -21,10 +21,6 @@ const getPreparedTodos = (
       .toLowerCase()
       .includes(filterInstruction.todoName.toLowerCase());
 
-    // if (filterInstruction.todosType === TodosType.All) {
-    //   return containsSubstringInName;
-    // }
-
     if (filterInstruction.todosType === TodosType.Active) {
       return !todo.completed && containsSubstringInName;
     }
@@ -66,13 +62,6 @@ export const App: React.FC = () => {
     }));
   };
 
-  const handleResetFilter = () => {
-    setFilterInstructions({
-      todosType: TodosType.All,
-      todoName: '',
-    });
-  };
-
   return (
     <>
       <div className="section">
@@ -83,7 +72,6 @@ export const App: React.FC = () => {
             <div className="block">
               <TodoFilter
                 filterInstructions={filterInstructions}
-                onResetFilter={handleResetFilter}
                 onFilterChange={handleFilterChange}
               />
             </div>

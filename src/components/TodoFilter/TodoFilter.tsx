@@ -5,13 +5,11 @@ import { FilterInstructions } from '../../types/FilterInstructions';
 interface Props {
   onFilterChange: (newValue: TodosType | string, fieldName: string) => void;
   filterInstructions: FilterInstructions;
-  onResetFilter: () => void;
 }
 
 export const TodoFilter: React.FC<Props> = ({
   onFilterChange,
   filterInstructions,
-  onResetFilter,
 }) => (
   <form className="field has-addons">
     <p className="control">
@@ -49,7 +47,7 @@ export const TodoFilter: React.FC<Props> = ({
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         {filterInstructions.todoName && (
           <button
-            onClick={() => onResetFilter()}
+            onClick={() => onFilterChange('', 'todoName')}
             data-cy="clearSearchButton"
             type="button"
             className="delete"
